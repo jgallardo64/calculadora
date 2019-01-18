@@ -12,6 +12,9 @@ $client = new SoapClient("http://localhost/calculadora/wsdl/calculadora_service_
         <option value="Multiplicacion">Multiplicar</option>
         <option value="Division">Dividir</option>
         <option value="RaizCuadrada">Raiz cuadrada</option>
+        <option value="Seno">Seno</option>
+        <option value="Coseno">Coseno</option>
+        <option value="Tangente">Tangente</option>
     </select><br><br>
     <input type="submit" value="Calcular"><br><br>
 </form><hr>
@@ -49,6 +52,18 @@ if ($_POST) {
         case 'RaizCuadrada':
             $raizCuadrada = $client->RaizCuadrada($params);
             echo "El resultado de la raiz cuadrada es: " . $raizCuadrada->resultadoRaizCuadrada;
+            break;
+        case 'Seno':
+            $seno = $client->Seno($params);
+            echo "El seno es: " . $seno->resultadoSeno;
+            break;
+        case 'Coseno':
+            $coseno = $client->Coseno($params);
+            echo "El coseno es: " . $coseno->resultadoCoseno;
+            break;
+        case 'Tangente':
+            $tangente = $client->Tangente($params);
+            echo "La tangente es: " . $tangente->resultadoTangente;
             break;
     }
 }

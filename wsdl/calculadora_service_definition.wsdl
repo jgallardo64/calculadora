@@ -83,6 +83,48 @@
                     </s:sequence>
                 </s:complexType>
             </s:element>
+            <s:element name="Seno">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="intA" type="s:int"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="respuestaSeno">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="resultadoSeno" type="s:float"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="Coseno">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="intA" type="s:int"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="respuestaCoseno">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="resultadoCoseno" type="s:float"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="Tangente">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="intA" type="s:int"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="respuestaTangente">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="resultadoTangente" type="s:float"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
         </s:schema>
     </wsdl:types>
     <wsdl:message name="SumaSoapIn">
@@ -114,6 +156,24 @@
     </wsdl:message>
     <wsdl:message name="RaizCuadradaSoapOut">
         <wsdl:part name="parameters" element="tns:respuestaRaizCuadrada"/>
+    </wsdl:message>
+    <wsdl:message name="SenoSoapIn">
+        <wsdl:part name="parameters" element="tns:Seno"/>
+    </wsdl:message>
+    <wsdl:message name="SenoSoapOut">
+        <wsdl:part name="parameters" element="tns:respuestaSeno"/>
+    </wsdl:message>
+    <wsdl:message name="CosenoSoapIn">
+        <wsdl:part name="parameters" element="tns:Coseno"/>
+    </wsdl:message>
+    <wsdl:message name="CosenoSoapOut">
+        <wsdl:part name="parameters" element="tns:respuestaCoseno"/>
+    </wsdl:message>
+    <wsdl:message name="TangenteSoapIn">
+        <wsdl:part name="parameters" element="tns:Tangente"/>
+    </wsdl:message>
+    <wsdl:message name="TangenteSoapOut">
+        <wsdl:part name="parameters" element="tns:respuestaTangente"/>
     </wsdl:message>
     <wsdl:portType name="CalculatorSoap">
         <wsdl:operation name="Suma">
@@ -150,6 +210,27 @@
             </wsdl:documentation>
             <wsdl:input message="tns:RaizCuadradaSoapIn"/>
             <wsdl:output message="tns:RaizCuadradaSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Seno">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+        Calcula el seno de un angulo
+            </wsdl:documentation>
+            <wsdl:input message="tns:SenoSoapIn"/>
+            <wsdl:output message="tns:SenoSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Coseno">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+        Calcula el coseno de un angulo
+            </wsdl:documentation>
+            <wsdl:input message="tns:CosenoSoapIn"/>
+            <wsdl:output message="tns:CosenoSoapOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="Tangente">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+        Calcula la tangente de un angulo
+            </wsdl:documentation>
+            <wsdl:input message="tns:TangenteSoapIn"/>
+            <wsdl:output message="tns:TangenteSoapOut"/>
         </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="CalculatorSoap" type="tns:CalculatorSoap">
@@ -192,6 +273,33 @@
         </wsdl:operation>
         <wsdl:operation name="RaizCuadrada">
             <soap:operation soapAction="http://localhost/calculadora/RaizCuadrada" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Seno">
+            <soap:operation soapAction="http://localhost/calculadora/Seno" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Coseno">
+            <soap:operation soapAction="http://localhost/calculadora/Coseno" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Tangente">
+            <soap:operation soapAction="http://localhost/calculadora/Tangente" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>

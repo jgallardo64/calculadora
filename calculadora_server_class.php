@@ -43,4 +43,22 @@ class Calculadora
         return $respuestaRaizCuadrada;
     }
 
+    public function Seno($params)
+    {
+        $respuestaSeno->resultadoSeno = sin(deg2rad($params->intA));
+        return $respuestaSeno;
+    }
+
+    public function Coseno($params)
+    {
+        $respuestaCoseno->resultadoCoseno = cos(deg2rad($params->intA));
+        return $respuestaCoseno;
+    }
+
+    public function Tangente($params)
+    {
+        $respuestaTangente->resultadoTangente = tan(deg2rad($params->intA));
+        return $respuestaTangente;
+    }
+
 }
