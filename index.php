@@ -4,20 +4,37 @@ $client = new SoapClient("http://localhost/calculadora/wsdl/calculadora_service_
 ?>
 
 <form action="#" method="post">
-    Numero 1 <input type="text" name="num1" id="num1"><br><br>
+Operacion <select onchange="mostrar(this);" name="operation" id="operation">
+    <option value="Suma">Sumar</option>
+    <option value="Resta">Restar</option>
+    <option value="Multiplicacion">Multiplicar</option>
+    <option value="Division">Dividir</option>
+    <option value="RaizCuadrada">Raiz cuadrada</option>
+    <option value="Seno">Seno</option>
+    <option value="Coseno">Coseno</option>
+    <option value="Tangente">Tangente</option>
+</select><br><br>
+
+Numero 1 <input type="text" name="num1" id="num1"><br><br>
+
+<div id="num2" style="display: block;">
     Numero 2 <input type="text" name="num2" id="num2"><br><br>
-    Operacion <select name="operation" id="operation">
-        <option value="Suma">Sumar</option>
-        <option value="Resta">Restar</option>
-        <option value="Multiplicacion">Multiplicar</option>
-        <option value="Division">Dividir</option>
-        <option value="RaizCuadrada">Raiz cuadrada</option>
-        <option value="Seno">Seno</option>
-        <option value="Coseno">Coseno</option>
-        <option value="Tangente">Tangente</option>
-    </select><br><br>
-    <input type="submit" value="Calcular"><br><br>
+</div>
+
+<input type="submit" value="Calcular"><br><br>
+
 </form><hr>
+
+<script>
+    function mostrar(that) {
+        if (that.value == "RaizCuadrada" || that.value == "Seno" || that.value == "Coseno" || that.value == "Tangente") {
+            document.getElementById("num2").style.display = "none";
+        }
+        else {
+            document.getElementById("num2").style.display = "block";
+        }
+    }
+</script>
 
 <?php
 
@@ -27,14 +44,6 @@ if ($_POST) {
     switch ($_POST['operation']) {
         case 'Suma':
             $suma = $client->Suma($params);
-            /*var_dump($params);
-            echo "<br>Funciones:<br>";
-            var_dump($client->__getFunctions());
-            echo "<br>Tipos:<br>";
-            var_dump($client->__getTypes());
-            echo "<br>Resultado:<br>";
-            var_dump($suma);
-            echo "<br>";*/
             echo "El resultado de la suma es: " . $suma->resultadoSuma;
             break;
         case 'Resta':
